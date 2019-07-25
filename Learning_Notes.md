@@ -127,5 +127,27 @@ The launch files start the Gazebo simulation of the arm, load the controller con
 ### roslaunch rrbot_control
 `roslaunch rrbot_control rrbot_control.launch`
 
-**OUTPUT:**
+**OUTPUT:**</br>
 ![](assets/markdown-img-paste-20190723124101382.png)
+## 4. Realtime
+
+`rostopic list`
+
+![rostoic list](assets/markdown-img-paste-20190725094329137.png)
+
+`FROM /ros_controllers/effort_controllers/joint1_position_controller.cpp`
+```
+// Start realtime state publisher
+  controller_state_publisher_.reset( new realtime_tools::RealtimePublisher<control_msgs::JointControllerState>(n, "state", 1));
+
+  // Start command subscriber
+  sub_command_ = n.subscribe<std_msgs::Float64>("command", 1, &JointPositionController::setCommandCB, this);
+```
+**We can find that the topic "state" is realtime, but the topic "command" not.**
+
+
+realtime_tools | |  | |
+- | - | - | - |
+RealtimeBuffer | RealtimeBox | RealtimeClock | RealtimePublisher
+
+LINK：http://docs.ros.org/jade/api/realtime_tools/html/annotated.html
