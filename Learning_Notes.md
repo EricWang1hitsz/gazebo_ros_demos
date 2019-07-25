@@ -147,7 +147,7 @@ The launch files start the Gazebo simulation of the arm, load the controller con
 
 
 realtime_tools | |  | |
-- | - | - | - |
+ - | - | - | - |
 RealtimeBuffer | RealtimeBox | RealtimeClock | RealtimePublisher
 
 LINK：http://docs.ros.org/jade/api/realtime_tools/html/annotated.html
